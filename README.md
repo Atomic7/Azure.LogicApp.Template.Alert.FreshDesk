@@ -3,9 +3,9 @@
 
 [![Deploy to Azure](https://azuredeploy.net/deploybutton.png)](https://azuredeploy.net/)
 
-Ever wanted to integrate [Nodinite](https://nodinite.com/) with [Freshdesk](https://freshdesk.com/)? Using [Nodinite's](https://nodinite.com) HTTP WebHook plugin and a Logic App it is possible. 
+Ever wanted to integrate [Nodinite](https://nodinite.com/) with [Freshdesk](https://freshdesk.com/) or any other customer support software? Using [Nodinite's](https://nodinite.com) HTTP WebHook plugin and a Logic App it is possible. 
 
-This repository contains an Azure ARM template that can receive an HTTP call from [Nodinite](https://nodinite.com) and uses Azure's built-in connector for [FreshDesk](https://freshdesk.com/).
+This repository contains a simple Logic App template to get you started, which receives an HTTP call from [Nodinite](https://nodinite.com) and uses Azure's built-in connector for [FreshDesk](https://freshdesk.com/).
 
 ## Requirements
 
@@ -31,7 +31,7 @@ The Logic app will be configured to retrieve data from Nodinite (the JSON schema
 Some fields are pre-defined:
 
 * Description
-* Priority
+* Priority (SLA)
 * Status 
 * Subject
 * Type
