@@ -50,4 +50,4 @@ It should basically look like the screenshot below.
 
 If you have followed the steps above, a ticket should be created in your [FreshDesk](https://freshdesk.com) instance - as shown below.
 
-![FreshDesk Screenshot](./assets/images/freshdesk-ticket-created-screenshot.png)
+![FreshDesk Screenshot](./assets/images/freshdesk-ticket-created-screenshot-v2.png)
