@@ -14,7 +14,7 @@
     "variables": {},
     "resources": [
         {
-            "comments": "Generalized from resource: '/subscriptions/dea06540-2d1c-4ea8-ad1a-739a2147353f/resourceGroups/Nodinite-Dev-Alert2FreshDesk/providers/Microsoft.Logic/workflows/Nodinite.Alert.Freshdesk'.",
+            "comments": "Generalized from resource: '/subscriptions/dea06540-2d1c-4ea8-ad1a-739a2147353f/resourceGroups/Nodinite-Dev-Nodinite2FreshDesk2/providers/Microsoft.Logic/workflows/Nodinite.Alert.Freshdesk'.",
             "type": "Microsoft.Logic/workflows",
             "name": "[parameters('workflows_Nodinite.Alert.Freshdesk_name')]",
             "apiVersion": "2017-07-01",
@@ -236,26 +236,44 @@
                         "For_each": {
                             "foreach": "@triggerBody()?['MonitorViews']",
                             "actions": {
-                                "Create_a_ticket": {
-                                    "runAfter": {},
-                                    "type": "ApiConnection",
-                                    "inputs": {
-                                        "body": {
-                                            "description": "Error in MonitorView: @{items('for_each')['name']} - @{concat(concat(triggerBody()?['WebClientUrl'], '/Monitor/MonitorView/'), items('for_each')['MonitorViewId'])}",
-                                            "email": "",
-                                            "priority": "Low",
-                                            "status": "Open",
-                                            "subject": "Error in MonitorView: @{items('for_each')['name']}",
-                                            "type": "Problem"
-                                        },
-                                        "host": {
-                                            "connection": {
-                                                "name": "@parameters('$connections')['freshdesk']['connectionId']"
+                                "Condition": {
+                                    "actions": {
+                                        "Create_a_ticket": {
+                                            "runAfter": {},
+                                            "type": "ApiConnection",
+                                            "inputs": {
+                                                "body": {
+                                                    "description": "Error in MonitorView: @{items('for_each')?['Name']} - @{concat(concat(triggerBody()?['WebClientUrl'], '/Monitor/MonitorView/'), items('for_each')['MonitorViewId'])} ",
+                                                    "email": "info@nodinite.com",
+                                                    "priority": "Low",
+                                                    "status": "Open",
+                                                    "subject": "Error in MonitorView: @{items('for_each')['name']}",
+                                                    "type": "Problem"
+                                                },
+                                                "host": {
+                                                    "connection": {
+                                                        "name": "@parameters('$connections')['freshdesk']['connectionId']"
+                                                    }
+                                                },
+                                                "method": "post",
+                                                "path": "/api/v2/tickets"
                                             }
-                                        },
-                                        "method": "post",
-                                        "path": "/api/v2/tickets"
-                                    }
+                                        }
+                                    },
+                                    "runAfter": {},
+                                    "expression": {
+                                        "and": [
+                                            {
+                                                "not": {
+                                                    "equals": [
+                                                        "@items('for_each')['StatusCode']['StatusCode']",
+                                                        0
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    "type": "If"
                                 }
                             },
                             "runAfter": {},
@@ -281,14 +299,14 @@
             ]
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/dea06540-2d1c-4ea8-ad1a-739a2147353f/resourceGroups/Nodinite-Dev-Alert2FreshDesk/providers/Microsoft.Web/connections/freshdesk'.",
+            "comments": "Generalized from resource: '/subscriptions/dea06540-2d1c-4ea8-ad1a-739a2147353f/resourceGroups/Nodinite-Dev-Nodinite2Freshdesk2/providers/Microsoft.Web/connections/freshdesk'.",
             "type": "Microsoft.Web/connections",
             "name": "[parameters('connections_freshdesk_name')]",
             "apiVersion": "2016-06-01",
             "location": "westeurope",
             "scale": null,
             "properties": {
-                "displayName": "[concat('Nodinite Freshdesk', parameters('connections_freshdesk_name'))]",
+                "displayName": "[concat(parameters('connections_freshdesk_name'),'Freshdesk', parameters('connections_freshdesk_name'))]",
                 "customParameterValues": {},
                 "api": {
                     "id": "[concat('/subscriptions/dea06540-2d1c-4ea8-ad1a-739a2147353f/providers/Microsoft.Web/locations/westeurope/managedApis/', parameters('connections_freshdesk_name'))]"
