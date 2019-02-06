@@ -12,7 +12,7 @@ This repository contains a simple Logic App template to get you started, which r
 For this to work you need to have:
 
 1. A running instance of [Nodinite](https://nodinite.com)
-2. The HTTP Webhook plugin for Alarms (For this template to work, __**do not enable**__ the **Compress Body** flag in the plugin configuration)
+2. The [HTTP Webhook alarm plugin](https://documentation.nodinite.com/Documentation/WebClient?doc=/5.%20Administration/5.%20Settings/1.%20Alarm%20Plugins/HTTP%20Webhook/Overview) (For this template to work, __**do not enable**__ the **Compress Body** flag in the plugin configuration)
 3. A working instance of [FreshDesk](https://freshdesk.com)
 4. Your FreshDesk API key
 
