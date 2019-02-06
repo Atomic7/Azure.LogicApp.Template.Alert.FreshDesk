@@ -7,6 +7,14 @@ Ever wanted to integrate [Nodinite](https://nodinite.com/) with [Freshdesk](http
 
 This repository contains an Azure ARM template that can receive an HTTP call from [Nodinite](https://nodinite.com) and uses Azure's built-in connector for [FreshDesk](https://freshdesk.com/).
 
+## Requirements
+
+For this to work you need to have:
+
+1. A running instance of [Nodinite](https://nodinite.com)
+2. The HTTP Webhook plugin for Alarms
+3. A working instance of [FreshDesk](https://freshdesk.com)
+
 ## What it does
 
 ![Azure Logic App Designer](./assets/images/azure-logic-app-designer-screenshot.png)
