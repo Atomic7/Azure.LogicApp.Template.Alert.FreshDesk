@@ -12,7 +12,7 @@ This repository contains a simple Logic App template to get you started, which r
 For this to work you need to have:
 
 1. A running instance of [Nodinite](https://nodinite.com)
-2. The HTTP Webhook plugin for Alarms
+2. The HTTP Webhook plugin for Alarms (For this template to work, __**do not enable**__ the **Compress Body** flag in the plugin configuration)
 3. A working instance of [FreshDesk](https://freshdesk.com)
 4. Your FreshDesk API key
 
@@ -30,18 +30,18 @@ The Logic app will be configured to retrieve data from Nodinite (the JSON schema
 
 Some fields are pre-defined:
 
-* Description
-* Priority (SLA)
-* Status 
-* Subject
-* Type
+* **Subject** - Predefined value: "Error in MonitorView: {Name of the Monitor View}"
+* **Description** - Predefined value contains the name and a link to the Monitor View in your [Nodinite](https://nodinite.com) installation.
+* **Priority (SLA)** - Predefined value: Low
+* **Status** - Predefined value: Open
+* **Type** - Predefined value: Problem
 
 Depending on your FreshDesk instance, other fields might need to be configured, e.g. **Product**.
 
 ## How do I test this
 
 1. Visit the WebClient of your [Nodinite](https://nodinite.com) installation.
-2. Go to Administration, Settings, Alarm Plugins and choose the **HTTP Webhook* plugin.
+2. Go to Administration, Settings, Alarm Plugins and choose the **HTTP Webhook** plugin.
 3. Choose the "Configuration" tab and fill in the URL of your Logic App in the **Test URL** field.
 4. Click the **Save** button.
 It should basically look like the screenshot below.
